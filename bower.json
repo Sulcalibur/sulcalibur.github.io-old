@@ -1,0 +1,33 @@
+{
+  "name": "freshi-style",
+  "version": "0.0.1",
+  "authors": [
+    "Suleiman Leadbitter <suleiman.leadbitter@gmail.com>"
+  ],
+  "description": "Starter framework",
+  "main": "main",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "starter"
+  ],
+  "license": "MIT",
+  "homepage": "http://suljam.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "animate.css": "~3.4.0",
+    "animate.styl": "~1.0.4",
+    "jeet": "~6.1.2",
+    "jquery": "~2.1.4",
+    "modernizr": "~2.8.3",
+    "normalize.styl": "~3.0.3",
+    "wow.js": "~1.1.2"
+  }
+}
