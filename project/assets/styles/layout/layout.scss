@@ -1,0 +1,52 @@
+.container {
+  max-width: rem-calc(800px);
+  @include center;
+}
+
+.content {
+  @include col(4/6, $offset:1/6);
+}
+
+aside {
+  @include col(1/4);
+}
+
+
+header {
+  height: rem-calc(500px);
+  background: #db707f; /* Old browsers */
+  background: -moz-linear-gradient(top,  #db707f 0%, #febb6e 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#db707f), color-stop(100%,#febb6e)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #db707f 0%,#febb6e 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #db707f 0%,#febb6e 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #db707f 0%,#febb6e 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #db707f 0%,#febb6e 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db707f', endColorstr='#febb6e',GradientType=0 ); /* IE6-9 */
+
+
+  svg {
+    @include col(4/12, $offset:4/12);
+    margin-top: rem-calc(200px);
+    // position: fixed;
+  }
+  h1, h2 {
+    @include hide-text;
+  }
+}
+
+p {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  @include col(8/10, $offset:1/10);
+}
+
+blockquote, .tagline, .btn {
+  @include col(4/6, $offset:1/6);
+  max-width: rem-calc(800px);
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.tagline {
+  text-align: center;
+}

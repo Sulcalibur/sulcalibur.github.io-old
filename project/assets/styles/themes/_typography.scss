@@ -1,0 +1,33 @@
+// Typography
+
+* {
+	font-family: HelveticaNeue;
+}
+
+h1 {
+	
+}
+
+h2 {
+	font-size: rem-calc(38px);
+	color: #4A4155;
+	font-weight: lighter;
+	line-height: rem-calc(46px);
+}
+
+
+p {
+	font-size: rem-calc(24px);
+	color: #4A4155;
+	letter-spacing: 1px;
+	line-height: rem-calc(35px);
+}
+
+blockquote {
+	color: $forth-color;
+	font-style: italic;
+	font-size: rem-calc(30px);
+	line-height: rem-calc(40px);
+	border-left: 5px $forth-color solid;
+	padding-left: 2rem;
+}

@@ -1,0 +1,57 @@
+// Button
+
+.btn {
+	background-color: $forth-color;
+	padding: .5em 0;
+	text-align: center;
+	text-decoration: none;
+	font-size: rem-calc(28px);
+	font-weight: 100;
+	color: shade($forth-color, 30%);	
+	border-radius: 5px;
+	box-shadow: shade($forth-color, 30%) 0 3px 0;
+}
+
+// Footer
+footer {
+	@include cf();
+	// @include col(10/12);
+	display: block;
+	clear: left;
+	margin: auto;
+	
+	> svg {
+		// @include col(2/12, $offset:5/12);
+		// width: rem-calc(22px);
+		@include center(42px);
+		// margin-top: 4rem;
+		margin-bottom: 10rem;
+	}
+}
+
+// Parallax
+	.parallax {
+		// background-image: url('');
+		position: absolute;
+		// top: 300px;
+		overflow: hidden;
+		max-width: 100%;
+		
+		
+		.buildings-1, .buildings-2 {
+			width: 1455px;
+			min-width: 100%;
+		}
+		
+		#buildings-1 {
+			fill: $third-color;
+			position: static;
+			bottom: 0;
+		}
+		
+		#buildings-2 {
+			fill: $second-color;
+			position: static;
+			top: -200px;
+		}
+	}

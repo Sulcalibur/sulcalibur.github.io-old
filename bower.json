@@ -1,0 +1,30 @@
+{
+  "name": "freshi",
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "jeet": "~6.1.2",
+    "modernizr": "~2.8.3",
+    "normalize-scss": "~3.0.2",
+    "juice": "~1.0.0",
+    "bourbon": "~4.1.0"
+  },
+  "version": "0.0.3",
+  "authors": [
+    "Suleiman Leadbitter <suleiman.leadbitter@gmail.com>"
+  ],
+  "description": "A Starter template for static HTML",
+  "keywords": [
+    "jade",
+    "scss",
+    "bower"
+  ],
+  "license": "MIT",
+  "homepage": "http://suljam.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

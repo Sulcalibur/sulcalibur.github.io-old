@@ -1,0 +1,28 @@
+extends assets/templates/master
+append config
+  - var PageTitle = "Suljam ~ Designed with Standards"
+  - var jQuery = false
+  - var Modernizr = false
+  - var PageSlug = "suljam"
+block body
+  body
+      header
+        h1 Suljam
+        h2 Designed <em>with</em> Standards
+        include assets/images/SuljamLogoText.svg
+      include assets/templates/includes/parallax
+      .container
+        .content
+          h2.tagline Made by Us. Made for You.
+          p Suljam is a small family run company. We are not your typical design agency, in fact we hate the word “agency”. 
+    
+          p We are a small team. A team with one goal.
+          blockquote Create the best that we can create. Always.
+          p That’s it. No fluff. No pitch. No lies.
+          
+          p We write, talk and teach with honesty and curiosity and create what we like or what is needed. Most of our apps are created out of our own frustrations so therefore no one knows them better or how ideally they should work than us and we always listen to our users. 
+          p We believe in scratching our own itch. Other times we create just to learn or have fun. Regardless we are always pushing and are incredibly passionate about our products.
+          
+          a.btn(href="mailto:sul@suljam.com") Get in Touch
+        
+      include assets/templates/includes/footer

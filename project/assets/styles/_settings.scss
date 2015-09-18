@@ -1,0 +1,74 @@
+// ====================================================
+//  Bourbon Settings
+// ====================================================
+
+
+
+
+
+// ====================================================
+//  Jeet Settings
+// ====================================================
+
+/**
+ * Grid settings.
+ * All values are defaults and can therefore be easily overidden.
+ */
+
+$jeet-gutter:           3      !default;
+$jeet-parent-first:     false  !default;
+$jeet-layout-direction: "LTR"  !default;
+$jeet-max-width:        1410px !default;
+
+
+// ====================================================
+//  Juice Settings
+// ====================================================
+
+// Base px
+$base-px-default: 16px !default;
+$browser-prefixes: false !default;
+
+// Breakpoints
+$hdpi-ratio-default: 1.3 !default;
+$breakpoint-xlarge-default: em-calc(1920) !default;
+$breakpoint-large-default: em-calc(1440) !default;
+$breakpoint-medium-default: em-calc(1024) !default;
+$breakpoint-small-default: em-calc(640) !default;
+$breakpoint-xsmall-default: em-calc(480) !default;
+$breakpoint-xxsmall-default: em-calc(320) !default;
+
+// Show/Hide
+$show-display-default: block !default;
+
+/// Border Radius
+$border-radius-default: 5px !default;
+
+// Placeholder Color
+$placeholder-color-default: #555555 !default;
+
+// Triangle
+$triangle-direction-default: right !default;
+$triangle-size-default: $base-px-default !default;
+$triangle-color-default: #222222 !default;
+$triangle-element-default: after !default;
+
+// Circle
+$circle-size-default: $base-px-default !default;
+$circle-color-default: inherit !default;
+$circle-border-width-default: null !default;
+$circle-border-color-default: #222222 !default;
+$circle-display-default: inline-block !default;
+
+// Square
+$square-size-default: $base-px-default !default;
+$square-color-default: black !default;
+$square-border-width-default: null !default;
+$square-border-color-default: grey !default;
+$square-element-default: after !default;
+
+// Position
+$position-default: null !default;
+
+// Tint/Shade
+$mix-percent-default: 15% !default;
