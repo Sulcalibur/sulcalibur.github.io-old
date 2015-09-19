@@ -1,16 +1,18 @@
-var gulp         = require('gulp'),
-    jade         = require('gulp-jade'),
-    prettify     = require('gulp-prettify'),
-    stylus       = require('gulp-stylus'),
-    browserSync  = require('browser-sync'),
-    uglify       = require('gulp-uglify'),
-    minifycss    = require('gulp-minify-css'),
-    rename       = require('gulp-rename'),
-    coffee       = require('gulp-coffee'),
-    autoprefixer = require('gulp-autoprefixer'),
-    concat       = require('gulp-concat'),
-    sourcemaps   = require('gulp-sourcemaps'),
-    watch        = require('gulp-watch')
+var gulp           = require('gulp'),
+    jade           = require('gulp-jade'),
+    prettify       = require('gulp-prettify'),
+    stylus         = require('gulp-stylus'),
+    browserSync    = require('browser-sync'),
+    uglify         = require('gulp-uglify'),
+    minifycss      = require('gulp-minify-css'),
+    rename         = require('gulp-rename'),
+    coffee         = require('gulp-coffee'),
+    autoprefixer   = require('gulp-autoprefixer'),
+    concat         = require('gulp-concat'),
+    sourcemaps     = require('gulp-sourcemaps'),
+    svgspritesheet = require('gulp-svg-spritesheet'),
+    // svgspritesheet = require('gulp-svg-sprite'),
+    watch          = require('gulp-watch')
 ;
 
 gulp.task('styles', function() {
@@ -49,8 +51,16 @@ gulp.task('browser-sync', function () {
   });
 });
 
-// var pre_coffee_files = ['project/assets/scripts/scriptspre.coffee'];
-// var post_coffee_files = ['project/assets/scripts/scriptspost.coffee'];
+gulp.task('svgspritesheet', function () {
+    gulp.src('project/assets/images/*.svg')
+    .pipe(svgspritesheet({
+        cssPathSvg: 'build/assets/images/sprite.svg',
+        templateSrc: 'project/styl.tpl',
+        templateDest: 'project/assets/styles/sprite.styl'
+    }))
+    .pipe(gulp.dest('build/assets/images/sprite.svg'));
+});
+
 
 gulp.task('coffee', function() {
     return gulp.src('project/assets/scripts/*.coffee')
