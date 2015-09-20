@@ -11,17 +11,18 @@ var gulp              = require('gulp'),
     concat            = require('gulp-concat'),
     sourcemaps        = require('gulp-sourcemaps'),
     svgspritesheet    = require('gulp-svg-spritesheet'),
+    html2jade         = require('gulp-html2jade'),
     svgmin            = require('gulp-svgmin'),
-    // postcss           = require('gulp-postcss'),
-    // csswring          = require('csswring'),
+    // postcss        = require('gulp-postcss'),
+    // csswring       = require('csswring'),
     // svgspritesheet = require('gulp-svg-sprite'),
     watch             = require('gulp-watch')
 ;
 
 // Post CSS Plugins
-var processors = [
-  csswring
-];
+// var processors = [
+//   csswring
+// ];
 
 gulp.task('styles', function() {
   gulp.src('project/assets/styles/styles.styl')
@@ -60,6 +61,15 @@ gulp.task('browser-sync', function () {
   });
 });
 
+// SVG prep
+var options = {nspaces:2};
+
+gulp.task('svg2jade', function(){
+  gulp.src('project/assets/images/*.svg')
+    .pipe(html2jade(options))
+    .pipe(gulp.dest('project/templates/svg/'));
+});
+
 gulp.task('svgspritesheet', function () {
     gulp.src('project/assets/images/*.svg')
     .pipe(svgmin())
@@ -75,6 +85,13 @@ gulp.task('svgspritesheet', function () {
     }))
     .pipe(svgmin())
     .pipe(gulp.dest('build/assets/images/sprite.svg'));
+});
+
+gulp.task('minify-svg',function(){
+  gulp.src('project/assets/images/*svg')
+  .pipe(svgmin())
+  .pipe(html2jade(options))
+  .pipe(gulp.dest('build/assets/images/'));
 });
 
 
