@@ -1,22 +1,31 @@
-var gulp           = require('gulp'),
-    jade           = require('gulp-jade'),
-    prettify       = require('gulp-prettify'),
-    stylus         = require('gulp-stylus'),
-    browserSync    = require('browser-sync'),
-    uglify         = require('gulp-uglify'),
-    minifycss      = require('gulp-minify-css'),
-    rename         = require('gulp-rename'),
-    coffee         = require('gulp-coffee'),
-    autoprefixer   = require('gulp-autoprefixer'),
-    concat         = require('gulp-concat'),
-    sourcemaps     = require('gulp-sourcemaps'),
-    svgspritesheet = require('gulp-svg-spritesheet'),
+var gulp              = require('gulp'),
+    jade              = require('gulp-jade'),
+    prettify          = require('gulp-prettify'),
+    stylus            = require('gulp-stylus'),
+    browserSync       = require('browser-sync'),
+    uglify            = require('gulp-uglify'),
+    minifycss         = require('gulp-minify-css'),
+    rename            = require('gulp-rename'),
+    coffee            = require('gulp-coffee'),
+    autoprefixer      = require('gulp-autoprefixer'),
+    concat            = require('gulp-concat'),
+    sourcemaps        = require('gulp-sourcemaps'),
+    svgspritesheet    = require('gulp-svg-spritesheet'),
+    svgmin            = require('gulp-svgmin'),
+    // postcss           = require('gulp-postcss'),
+    // csswring          = require('csswring'),
     // svgspritesheet = require('gulp-svg-sprite'),
-    watch          = require('gulp-watch')
+    watch             = require('gulp-watch')
 ;
+
+// Post CSS Plugins
+var processors = [
+  csswring
+];
 
 gulp.task('styles', function() {
   gulp.src('project/assets/styles/styles.styl')
+  // .pipe(postcss(processors))
   .pipe(sourcemaps.init())
   .pipe(stylus())
   .pipe(minifycss())
@@ -53,11 +62,18 @@ gulp.task('browser-sync', function () {
 
 gulp.task('svgspritesheet', function () {
     gulp.src('project/assets/images/*.svg')
+    .pipe(svgmin())
     .pipe(svgspritesheet({
+        cssPathNoSvg: 'build/assets/images/sprite.png',
         cssPathSvg: 'build/assets/images/sprite.svg',
+        demoDest: 'project/demo.html',
+        padding: 0,
+        positioning: 'packed',
+        units: 'em',
         templateSrc: 'project/styl.tpl',
         templateDest: 'project/assets/styles/sprite.styl'
     }))
+    .pipe(svgmin())
     .pipe(gulp.dest('build/assets/images/sprite.svg'));
 });
 

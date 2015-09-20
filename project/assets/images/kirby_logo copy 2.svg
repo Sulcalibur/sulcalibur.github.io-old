@@ -1,24 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="149px" height="149px" viewBox="0 0 149 149" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
-    <title>kirby_logo copy 2</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Desktop" sketch:type="MSArtboardGroup" transform="translate(-264.000000, -1907.000000)" stroke="#D9B37E">
-            <g id="Specialities-Module" sketch:type="MSLayerGroup" transform="translate(-3.000000, 815.000000)">
-                <g id="Group" transform="translate(181.000000, 1092.000000)" sketch:type="MSShapeGroup">
-                    <g id="Oval-17-+-Oval-17-Copy-+-kirby_logo-copy-2">
-                        <g transform="translate(86.000000, 0.000000)">
-                            <g id="kirby_logo-copy-2">
-                                <path d="M74.1698113,35 L39,54.9748428 L39,94.8742138 L74.1698113,114.849057 L109.339623,94.8742138 L109.339623,54.9748428 L74.1698113,35 L74.1698113,35 Z M89.8176101,75.754717 L79.9559748,81.0880503 L79.9559748,81.7924528 L89.8176101,81.7924528 L89.8176101,89.490566 L58.4716981,89.490566 L58.4716981,81.7924528 L68.3333333,81.7924528 L68.3333333,81.0377358 L58.4716981,75.754717 L58.4716981,66.1949686 L74.1698113,74.6477987 L89.8176101,66.1949686 L89.8176101,75.754717 L89.8176101,75.754717 Z" id="kirby_logo"></path>
-                                <circle id="Oval-17" cx="74.5" cy="74.5" r="74.5"></circle>
-                                <circle id="Oval-17-Copy" cx="75" cy="75" r="70"></circle>
-                            </g>
-                        </g>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg viewBox="0 0 149 149" xmlns="http://www.w3.org/2000/svg">
+  <g fill="none" stroke="#D9B37E" transform="translate(0 0)"><path d="M74.17 35l-35.17 19.975v39.899l35.17 19.975 35.17-19.975v-39.899l-35.17-19.975zm15.648 40.755l-9.862 5.333v.704h9.862v7.698h-31.346v-7.698h9.862v-.755l-9.862-5.283v-9.56l15.698 8.453 15.648-8.453v9.56z"/><circle cx="74.5" cy="74.5" r="74.5"/><circle cx="75" cy="75" r="70"/></g>
 </svg>
