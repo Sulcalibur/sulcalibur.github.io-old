@@ -1,9 +1,9 @@
 body
   background bg
-  color primary
+  color fifth
 
 .container
-  width 1400px
+  width 90%
   margin auto
 
 // Header Section
@@ -14,8 +14,11 @@ body
   width 100%
   background-color rgba(70, 98, 159, 1)
   -webkit-clip-path polygon(0 100%,100% 70%,100% 0, 0 0)
-  height 414px
-  margin-top -320px
+  height 800px
+  margin-top -640px
+  h1
+    padding 0
+    margin 0
 
 header
   position relative
@@ -23,7 +26,21 @@ header
   background url('../images/bg-temp.jpg')
   background-size cover
   -webkit-clip-path polygon(0 100%,100% 70%,100% 0, 0 0)
-  height 414px
+  height 800px
+  margin-top -20px
+  h2
+    position relative
+    top 270px
+    color white
+    span
+      font-style italic
+  + h3
+    float right
+    text-align right
+    width 50%
+    z-index 10
+    margin-top -30px
+
 
 nav
   ul
@@ -35,9 +52,6 @@ nav
     li
       display inline
       padding 1rem
-
-footer
-  background-image:  url('../footer-bg.png')
-  background-image none,url('../footer-bg.svg'), url('../footer-bg.png')
-  background-size 100% 100%
-  min-height 290px
+  a
+    text-decoration none
+    color white
