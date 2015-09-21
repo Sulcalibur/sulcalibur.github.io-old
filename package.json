@@ -33,8 +33,12 @@
     "uglify-js": "^2.4.16"
   },
   "devDependencies": {
+    "autoprefixer": "^6.0.3",
+    "csswring": "^4.0.0",
     "gulp-html2jade": "^1.1.1",
+    "gulp-postcss": "^6.0.0",
     "gulp-svg-spritesheet": "iamdarrenhall/gulp-svg-sprite",
-    "html2jade": "^0.8.4"
+    "html2jade": "^0.8.4",
+    "lost": "^6.6.1"
   }
 }

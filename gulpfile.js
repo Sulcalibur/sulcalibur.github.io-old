@@ -1,38 +1,38 @@
 var gulp              = require('gulp'),
     jade              = require('gulp-jade'),
+    postcss           = require('gulp-postcss'),
     prettify          = require('gulp-prettify'),
     stylus            = require('gulp-stylus'),
     browserSync       = require('browser-sync'),
     uglify            = require('gulp-uglify'),
-    minifycss         = require('gulp-minify-css'),
     rename            = require('gulp-rename'),
     coffee            = require('gulp-coffee'),
-    autoprefixer      = require('gulp-autoprefixer'),
     concat            = require('gulp-concat'),
     sourcemaps        = require('gulp-sourcemaps'),
     svgspritesheet    = require('gulp-svg-spritesheet'),
     html2jade         = require('gulp-html2jade'),
     svgmin            = require('gulp-svgmin'),
-    // postcss        = require('gulp-postcss'),
-    // csswring       = require('csswring'),
-    // svgspritesheet = require('gulp-svg-sprite'),
+    lost              = require('lost'),
+    autoprefixer      = require('autoprefixer'),
+    csswring          = require('csswring'),
     watch             = require('gulp-watch')
 ;
 
-// Post CSS Plugins
-// var processors = [
-//   csswring
-// ];
 
 gulp.task('styles', function() {
+  // Post CSS Plugins
+  var processors = [
+    lost,
+    autoprefixer({browsers: ['last 2 version']}),
+    csswring
+  ];
+
   gulp.src('project/assets/styles/styles.styl')
-  // .pipe(postcss(processors))
-  .pipe(sourcemaps.init())
-  .pipe(stylus())
-  .pipe(minifycss())
-  .pipe(autoprefixer())
-  .pipe(sourcemaps.write())
-  .pipe(gulp.dest('build/assets/css/'));
+    .pipe(sourcemaps.init())
+    .pipe(stylus())
+    .pipe(postcss(processors))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('build/assets/css/'));
 });
 
 gulp.task('markup', function() {
@@ -90,7 +90,7 @@ gulp.task('svgspritesheet', function () {
 gulp.task('minify-svg',function(){
   gulp.src('project/assets/images/*svg')
   .pipe(svgmin())
-  .pipe(html2jade(options))
+  // .pipe(html2jade(options))
   .pipe(gulp.dest('build/assets/images/'));
 });
 
@@ -129,7 +129,7 @@ gulp.task('scriptspost', function() {
 gulp.task('scripts',['coffee','scriptspre','scriptspost']);
 
 gulp.task('watch', function() {
-  gulp.watch('project/*.jade', ['markup']);
+  gulp.watch('project/**/*.jade', ['markup']);
   gulp.watch('project/assets/styles/**/*.styl', ['styles']);
   gulp.watch('project/assets/scripts/**/*.coffee', ['scripts']);
 });
