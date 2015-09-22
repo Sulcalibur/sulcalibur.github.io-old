@@ -66,6 +66,7 @@ var options = {nspaces:2};
 
 gulp.task('svg2jade', function(){
   gulp.src('project/assets/images/*.svg')
+    .pipe(svgmin())
     .pipe(html2jade(options))
     .pipe(gulp.dest('project/templates/svg/'));
 });
