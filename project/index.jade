@@ -9,16 +9,26 @@ block body
     header
       include templates/header
     h3 
-      | Skilled web &amp; app development with over two decades of design &amp; illustration experience.
-    section.fillercontainer  
+      | Skilled web 
+      span &amp; 
+      | app development with over 
+      br
+      | two 
+      //- span.number 2 
+      | decades of design 
+      span &amp; 
+      | illustration experience
+    section.whatcanwedo
+      include templates/whatcanwedo
+    .fillercontainer  
       include templates/filler
       include templates/filler
       include templates/filler
-    section.specialities  
+    .specialities  
       include templates/specialities
-    section.testimonials
+    .testimonials
       include templates/testimonials
-    section.fillercontainer  
+    .fillercontainer  
       include templates/filler
       include templates/filler
     include templates/footer
