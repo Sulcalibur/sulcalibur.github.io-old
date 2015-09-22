@@ -1,5 +1,5 @@
 body
-  background bg
+  background white
   color fifth
 
 .container
@@ -95,13 +95,15 @@ nav
   li
     list-style none
     lost-column 1/2
+    padding 30px 0
     p
-      lost-column 6/8 8
+      // lost-column 3/4
       // lost-offset 1/8
       // lost-align center
       // float none!important
-      // display block
-      // margin auto
+      width 60%
+      display block
+      margin auto
   h3
     font-weight 100
     lost-column 1/1
@@ -119,14 +121,28 @@ nav
 
 .whatcanwedo
   img.featured
-    -webkit-clip-path polygon(0 100%,100% 74%,100% 0, 0 26%)
+    -webkit-clip-path polygon(0 100%,100% 79%,100% 0, 0 21%)
+    position relative
+    display block
   .left
     height 600px
-    width 60%
+    lost-column 6/12
   .right
-    float right
-    width 20%
+    lost-align right
+    lost-column 3/12
     height 300px
+  > p
+    lost-column 4/12
+    float right
+    padding 2em 0
+    lost-utility clearfix
+  section
+    clear left
+    padding 2em 0
+    display block
+    margin auto
+    width 1020px
+
 
 
 // footer
