@@ -94,6 +94,13 @@ gulp.task('minify-svg',function(){
   .pipe(gulp.dest('build/assets/images/'));
 });
 
+gulp.task('minify-svg-icons',function(){
+  gulp.src('project/assets/images/icons/*svg')
+  .pipe(svgmin())
+  // .pipe(html2jade(options))
+  .pipe(gulp.dest('build/assets/images/icons/'));
+});
+
 
 gulp.task('coffee', function() {
     return gulp.src('project/assets/scripts/*.coffee')
