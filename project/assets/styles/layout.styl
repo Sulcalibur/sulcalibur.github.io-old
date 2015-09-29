@@ -15,7 +15,13 @@ body
   background-color rgba(70, 98, 159, 0.95)
   -webkit-clip-path polygon(0 100%,100% 20%,100% 0, 0 0)
   height 320px
-  margin-top -170px
+  margin-top -770px
+  opacity 0
+  transition: 0.9s ease-in-out all;
+  &.active
+    margin-top -170px
+    opacity 1
+
   h1
     padding 0
     margin 0
@@ -121,13 +127,13 @@ header
 div.simply-scroll-list
   width 100%
 
-nav
+.navbar
+  transition: 0.7s ease-in-out all;
+  width 100%
   ul
-    padding 0
+    padding 2rem
     margin 0
     display block
-    padding-top 2rem
-    padding-right 2rem
     float right
     li
       display inline
@@ -136,6 +142,24 @@ nav
   a
     text-decoration none
     color white
+  // &.active
+  //   ul
+  //     position fixed
+  //     // top 1rem
+  //     right 0rem
+  //   li
+  //     background-color rgba(white,0.3)
+  //     border-radius 3px
+  //     a
+  //       color primary
+  //       transition: 0.7s ease-in-out all;
+  //     &:hover
+  //       background-color rgba(primary,0.8)
+  //       a
+  //         color white
+
+
+
 
 // specialities
 .specialities
@@ -192,7 +216,7 @@ nav
     padding 2em 0
     display block
     margin auto
-    width 1020px
+    max-width 1020px
 
 
 

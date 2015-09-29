@@ -7,4 +7,16 @@
     });
   })(jQuery);
 
+  $(document).ready(function() {
+    jQuery(window).scroll(function() {
+      var threshold;
+      threshold = 700;
+      if (jQuery(window).scrollTop() >= 830) {
+        $('.logo').addClass('active');
+      } else {
+        $('.logo').removeClass('active');
+      }
+    });
+  });
+
 }).call(this);
