@@ -124,6 +124,7 @@ gulp.task('scriptspost', function() {
   return gulp.src([
                     'bower_components/jquery/dist/jquery.js',
                     'bower_components/wow.js/dist/wow.js',
+                    'bower_components/jquery-simplyscroll/jquery.simplyscroll.js',
                     'project/assets/scripts/scriptspost.js',
                   ])
     .pipe(sourcemaps.init())
