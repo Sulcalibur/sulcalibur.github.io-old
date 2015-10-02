@@ -7,18 +7,18 @@ block body
     .logo
       h1 Suljam
       include templates/svg/logo
-    //- h3 
-    //-   | Skilled web 
-    //-   span &amp; 
-    //-   | app development with over 
-    //-   br
-    //-   | two 
-    //-   //- span.number 2 
-    //-   | decades of design 
-    //-   span &amp; 
-    //-   | illustration experience
+    .getintouch
+      h2 Get in Touch
+      form(action='//formspree.io/suleiman.leadbitter@gmail.com', method='POST')
+        input.name(type='text', name='name', placeholder='Your Name')
+        input.email(type='email', name='_replyto', placeholder='Your Email Address')
+        textarea.message(type='textarea', name='_message')
+        input.button(type='submit', value='Send')
+        input(type='hidden', name='_subject', value='New submission!')
+        input(type='text', name='_gotcha', style='display:none')
+        input(type='hidden', name='_next', value='//localhost:3000/')
+
     .fillercontainer  
-      include templates/filler
       include templates/filler
       include templates/filler 
       include templates/filler

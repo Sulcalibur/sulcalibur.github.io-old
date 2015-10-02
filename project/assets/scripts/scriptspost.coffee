@@ -27,3 +27,11 @@ $(document).ready ->
 #       $('.navbar').removeClass 'active'
 #     return
 #   return
+
+# Formspree Ajax
+
+# $.ajax
+#   url: '//formspree.io/suleiman.leadbitter@gmail.com'
+#   method: 'POST'
+#   data: message: 'hello!'
+#   dataType: 'json'
