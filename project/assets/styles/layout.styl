@@ -6,257 +6,34 @@ body
   width 90%
   margin auto
 
-// General Settings
 
-// Header Section
-
-.logo
-  position fixed
-  z-index 4
-  width 100%
-  background-color rgba(70, 98, 159, 0.95)
-  -webkit-clip-path polygon(0 100%,100% 20%,100% 0, 0 0)
-  height 320px
-  margin-top -770px
-  opacity 0
-  transition: 0.9s ease-in-out all;
-  &.active
-    margin-top -170px
-    opacity 1
-
-  h1
-    padding 0
-    margin 0
-
-header
-  position relative
-  z-index 5
-  background url('../images/bg-temp.jpg')
-  background-size cover
-  -webkit-clip-path polygon(0 100%,100% 70%,100% 0, 0 0)
-  height 800px
-  margin-top -60px
-  h2
-    position relative
-    top 270px
-    color white
-    span
-      font-style italic
-  + h3
-    float right
-    text-align right
-    width 50%
-    z-index 10
-    margin-top -30px
-
-// Testimonials
-
-.testimonials
-  background-color rgba(70, 98, 159, 0.8)
-  -webkit-clip-path polygon(0 100%,100% 60%,100% 0, 0 40%)
-  height auto
-  padding 200px 0
-  section
-    position relative
-    top 40%
-    h2, p, h6
-      width 400px
-      margin auto
-      text-align center
-      color rgba(white, 0.8)
-    .avatar
-      height 60px
-      width 60px
-      border-radius 100%
-      display: block;
-      margin auto
-      // margin-left: auto;
-      // margin-right: auto;
-    cite a
-      text-align center
-      display block
-      color white
-      text-decoration none
-      padding 1rem
-
-// serviceicons
-
-.serviceicons
-  display block
-  width 100%
-  ul
-    padding 0
-    margin 0
-    position relative
-    width 100%
-    display block
-  li
-    list-style none
-    display inline
-    padding 4em
-
-.simply-scroll-container
-  position relative
-
-.simply-scroll-clip
-  position relative
-  overflow hidden
-
-.simply-scroll-list
-  overflow hidden
-  margin 0
-  padding 0
-  list-style none
-  li
-    padding 0
-    margin 0
-    list-style none
-
-.simply-scroll
-  // height 170px
-  // margin-bottom 1em
-  .simply-scroll-clip
-    // height 170px
-  .simply-scroll-list
-    li
-      float left
-      width 150px
-      height 170px
-      padding 1.6em
-
-// #scroller.simply-scroll.simply-scroll-list
-//   width 100%
-div.simply-scroll-list
-  width 100%
-
-.navbar
-  transition: 0.7s ease-in-out all;
-  width 100%
-  ul
-    padding 2rem
-    margin 0
-    display block
-    margin-top 50px
-    // float right
-    li
-      display inline
-      padding 1rem
-      font-size 20px
-  a
-    text-decoration none
-    color white
-    padding-top 10px
-    position relative
-    text-decoration none
-    // line-height 24px
-    &:before, &:after
-      content ''
-      position absolute
-      transition transform .5s ease
-    &:before
-      left 0
-      bottom 0
-      width 100%
-      height 2px
-      background white
-      transform  scaleX(0)
-    &:hover:before
-      transform  scaleX(1)
-
-
-
-
-
-  // &.active
-  //   ul
-  //     position fixed
-  //     // top 1rem
-  //     right 0rem
-  //   li
-  //     background-color rgba(white,0.3)
-  //     border-radius 3px
-  //     a
-  //       color primary
-  //       transition: 0.7s ease-in-out all;
-  //     &:hover
-  //       background-color rgba(primary,0.8)
-  //       a
-  //         color white
-
-
-
-
-// specialities
-.specialities
-  ul
-    max-width 800px
-    margin auto
-    padding 0
-  li
-    list-style none
-    lost-column 1/2
-    padding 30px 0
-    p
-      width 60%
-      display block
-      margin auto
-      font-size 1.1em
-  h3
-    font-weight 100
-    lost-column 1/1
-    font-size 2rem
-    text-align center
-    color primary
-    lost-utility clearfix
-  svg
-    width 160px
-    height 160px
-    display block
-    margin auto
-
-// whatcanwedo
-
-.whatcanwedo
-  img.featured
-    -webkit-clip-path polygon(0 100%,100% 79%,100% 0, 0 21%)
-    position relative
-    display block
-  .left
-    height 600px
-    lost-column 6/12
-  .right
-    lost-align right
-    lost-column 3/12
-    height 300px
-  > p
-    lost-column 4/12
-    float right
-    padding 2em 0
-    lost-utility clearfix
-  section
-    clear left
-    padding 2em 0
-    display block
-    margin auto
-    max-width 1020px
-
-// Contact Page
-
-// form
-form
-  width 400px
-  margin auto
-  input, .message
-    width 100%
-    overfolw hidden
-    margin 1rem 0
-    padding 0.5em 1em
-    border 2px solid fifth
-    color fifth
-  .message
-    height 200px
 // footer
 footer
   background-color rgba(70, 98, 159, 0.8)
   -webkit-clip-path polygon(0 100%,100% 100%,100% 0, 0 60%)
   height 414px
+
+
+
+
+// Themes
+
+// logo
+.logo
+  h1
+    z-index 12
+    position absolute
+    bottom 40px
+    left 100px
+    color white
+    font-family 'HelveticaNeue-UltraLight','Helvetica-Neue', Helvetica
+    font-weight 200
+    font-size 42px
+  svg
+    width 100px
+    z-index 12
+    position absolute
+    bottom 70px
+    left 20px
+
+// Typography

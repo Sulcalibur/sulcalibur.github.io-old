@@ -1,0 +1,77 @@
+// serviceicons
+
+.serviceicons
+  display block
+  width 100%
+  ul
+    padding 0
+    margin 0
+    position relative
+    width 100%
+    display block
+  li
+    list-style none
+    display inline
+    padding 4em
+
+.simply-scroll-container
+  position relative
+
+.simply-scroll-clip
+  position relative
+  overflow hidden
+
+.simply-scroll-list
+  overflow hidden
+  margin 0
+  padding 0
+  list-style none
+  li
+    padding 0
+    margin 0
+    list-style none
+
+.simply-scroll
+  // .simply-scroll-clip
+  .simply-scroll-list
+    li
+      float left
+      width 150px
+      height 170px
+      padding 1.6em
+
+// #scroller.simply-scroll.simply-scroll-list
+div.simply-scroll-list
+  width 100%
+
+.navbar
+  transition: 0.7s ease-in-out all;
+  width 100%
+  ul
+    padding 2rem
+    margin 0
+    display block
+    margin-top 50px
+    li
+      display inline
+      padding 1rem
+      font-size 20px
+  a
+    text-decoration none
+    color white
+    padding-top 10px
+    position relative
+    text-decoration none
+    &:before, &:after
+      content ''
+      position absolute
+      transition transform .5s ease
+    &:before
+      left 0
+      bottom 0
+      width 100%
+      height 2px
+      background white
+      transform  scaleX(0)
+    &:hover:before
+      transform  scaleX(1)
