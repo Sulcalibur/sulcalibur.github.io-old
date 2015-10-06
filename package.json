@@ -35,9 +35,13 @@
   "devDependencies": {
     "autoprefixer": "^6.0.3",
     "csswring": "^4.0.0",
+    "gulp-clean": "^0.3.1",
     "gulp-html2jade": "^1.1.1",
+    "gulp-ignore": "^2.0.1",
     "gulp-postcss": "^6.0.0",
+    "gulp-rimraf": "^0.2.0",
     "gulp-svg-spritesheet": "iamdarrenhall/gulp-svg-sprite",
+    "gulp-util": "^3.0.6",
     "html2jade": "^0.8.4",
     "lost": "^6.6.1"
   }

@@ -1,21 +1,28 @@
-var gulp              = require('gulp'),
-    jade              = require('gulp-jade'),
-    postcss           = require('gulp-postcss'),
-    prettify          = require('gulp-prettify'),
-    stylus            = require('gulp-stylus'),
-    browserSync       = require('browser-sync'),
-    uglify            = require('gulp-uglify'),
-    rename            = require('gulp-rename'),
-    coffee            = require('gulp-coffee'),
-    concat            = require('gulp-concat'),
-    sourcemaps        = require('gulp-sourcemaps'),
-    svgspritesheet    = require('gulp-svg-spritesheet'),
-    html2jade         = require('gulp-html2jade'),
-    svgmin            = require('gulp-svgmin'),
-    lost              = require('lost'),
-    autoprefixer      = require('autoprefixer'),
-    csswring          = require('csswring'),
-    watch             = require('gulp-watch')
+var gulp           = require('gulp'),
+    jade           = require('gulp-jade'),
+    postcss        = require('gulp-postcss'),
+    prettify       = require('gulp-prettify'),
+    stylus         = require('gulp-stylus'),
+    browserSync    = require('browser-sync'),
+    uglify         = require('gulp-uglify'),
+    rename         = require('gulp-rename'),
+    coffee         = require('gulp-coffee'),
+    concat         = require('gulp-concat'),
+    sourcemaps     = require('gulp-sourcemaps'),
+    svgspritesheet = require('gulp-svg-spritesheet'),
+    html2jade      = require('gulp-html2jade'),
+    svgmin         = require('gulp-svgmin'),
+    imagemin       = require('gulp-imagemin'),
+    rename         = require("gulp-rename"),
+    pngquant       = require('imagemin-pngquant'),
+    lost           = require('lost'),
+    autoprefixer   = require('autoprefixer'),
+    csswring       = require('csswring'),
+    gutil          = require('gulp-util'),
+    clean          = require('gulp-clean'),
+    rimraf         = require('rimraf'),
+    cp             = require('child_process'),
+    watch          = require('gulp-watch')
 ;
 
 gulp.task('styles', function() {
@@ -26,38 +33,48 @@ gulp.task('styles', function() {
     csswring
   ];
 
-  gulp.src('../Build/Dev/assets/styles/styles.styl')
+  gulp.src('project/assets/styles/styles.styl')
     .pipe(sourcemaps.init())
     .pipe(stylus())
     .pipe(postcss(processors))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('../Build/Dev//assets/css/'));
+    .pipe(gulp.dest('../Build/Dev/assets/css/'));
 });
 
 gulp.task('markup', function() {
   gulp.src('project/*.jade')
   .pipe(jade())
   .pipe(prettify({indent_size: 2}))
-  .pipe(gulp.dest('../Build/Dev//'));
+  .pipe(gulp.dest('../Build/Dev/'));
 });
 
 gulp.task('browser-sync', function () {
   var files = [
-  '../Build/Dev//**/*.html',
-  '../Build/Dev//assets/**/*.html',
-  '../Build/Dev//assets/css/**/*.css',
-  '../Build/Dev//assets/img/**/*.svg',
-  '../Build/Dev//assets/img/**/*.jpg',
-  '../Build/Dev//assets/img/**/*.gif',
-  '../Build/Dev//assets/img/**/*.png',
-  '../Build/Dev//assets/js/**/*.js'
+  '../Build/Dev/**/*.html',
+  '../Build/Dev/assets/**/*.html',
+  '../Build/Dev/assets/css/**/*.css',
+  '../Build/Dev/assets/img/**/*.svg',
+  '../Build/Dev/assets/img/**/*.jpg',
+  '../Build/Dev/assets/img/**/*.gif',
+  '../Build/Dev/assets/img/**/*.png',
+  '../Build/Dev/assets/js/**/*.js'
   ];
 
   browserSync.init(files, {
     server: {
-      baseDir: './build'
+      baseDir: '../Build/Dev'
     }
   });
+});
+
+gulp.task('imagemin', function () {
+    return gulp.src('project/assets/images/**/*')
+        .pipe(imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()]
+        }))
+        .pipe(gulp.dest('../Build/Dev/assets/img/'));
 });
 
 // SVG prep
@@ -74,31 +91,31 @@ gulp.task('svgspritesheet', function () {
     gulp.src('project/assets/images/*.svg')
     .pipe(svgmin())
     .pipe(svgspritesheet({
-        cssPathNoSvg: '../Build/Dev//assets/images/sprite.png',
-        cssPathSvg: '../Build/Dev//assets/images/sprite.svg',
-        demoDest: 'project/demo.html',
+        cssPathNoSvg: '../Build/Dev/assets/images/sprite.png',
+        cssPathSvg: '../Build/Dev/assets/images/sprite.svg',
+        demoDest: '../Build/Dev/demo.html',
         padding: 0,
         positioning: 'packed',
         units: 'em',
         templateSrc: 'project/styl.tpl',
-        templateDest: 'project/assets/styles/sprite.styl'
+        templateDest: '../Build/Dev/assets/styles/sprite.styl'
     }))
     .pipe(svgmin())
-    .pipe(gulp.dest('../Build/Dev//assets/images/sprite.svg'));
+    .pipe(gulp.dest('../Build/Dev/assets/images/sprite.svg'));
 });
 
 gulp.task('minify-svg',function(){
   gulp.src('project/assets/images/*svg')
   .pipe(svgmin())
   // .pipe(html2jade(options))
-  .pipe(gulp.dest('../Build/Dev//assets/images/'));
+  .pipe(gulp.dest('../Build/Dev/assets/images/'));
 });
 
 gulp.task('minify-svg-icons',function(){
   gulp.src('project/assets/images/icons/*svg')
   .pipe(svgmin())
   // .pipe(html2jade(options))
-  .pipe(gulp.dest('../Build/Dev//assets/images/icons/'));
+  .pipe(gulp.dest('../Build/Dev/assets/images/icons/'));
 });
 
 
@@ -117,7 +134,7 @@ gulp.task('scriptspre', function() {
     .pipe(concat('pre.js'))
     .pipe(sourcemaps.write())
     .pipe(uglify())
-    .pipe(gulp.dest('../Build/Dev//assets/js/'));
+    .pipe(gulp.dest('../Build/Dev/assets/js/'));
 });
 
 gulp.task('scriptspost', function() {
@@ -131,7 +148,7 @@ gulp.task('scriptspost', function() {
     .pipe(concat('post.js'))
     .pipe(sourcemaps.write())
     .pipe(uglify())
-    .pipe(gulp.dest('../Build/Dev//assets/js/'));
+    .pipe(gulp.dest('../Build/Dev/assets/js/'));
 });
 
 gulp.task('scripts',['coffee','scriptspre','scriptspost']);
@@ -142,4 +159,94 @@ gulp.task('watch', function() {
   gulp.watch('project/assets/scripts/**/*.coffee', ['scripts']);
 });
 
-gulp.task('default', ['styles','markup','watch','scripts','browser-sync']);
+gulp.task('clean', function(){
+  return gulp.src(['../Build/Dev/*'], {read:false})
+  .pipe(clean());
+});
+
+
+// Starting Working with Jekyll now ======================================
+
+// 
+// var messages = {
+//     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
+// };
+//
+// /**
+//  * Build the Jekyll Site
+//  */
+// gulp.task('jekyll-build', function (done) {
+//     browserSync.notify(messages.jekyllBuild);
+//     return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
+//         .on('close', done);
+// });
+//
+// /**
+//  * Rebuild Jekyll & do page reload
+//  */
+// gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
+//     browserSync.reload();
+// });
+//
+// /**
+//  * Wait for jekyll-build, then launch the Server
+//  */
+// gulp.task('jekyll-browser-sync', ['stylus', 'jekyll-build'], function() {
+//     browserSync({
+//         server: {
+//             baseDir: '_site'
+//         }
+//     });
+// });
+//
+// /*
+// * Doing some fancy Gulp stuff here
+// */
+// gulp.task('jekyll-jadefiles', function(){
+//   return gulp.src('_jadefiles/*.jade')
+//   .pipe(jade())
+//   .pipe(prettify({indent_size: 2}))
+//   .pipe(gulp.dest('_includes'));
+// });
+//
+// gulp.task('jekyll-jadelayouts', function(){
+//   return gulp.src('_jadelayouts/*.jade')
+//   .pipe(jade())
+//   .pipe(prettify({indent_size: 2}))
+//   .pipe(gulp.dest('_layouts'));
+// });
+//
+// gulp.task('jekyll-jade', ['jekyll-jadefiles', 'jekyll-jadelayouts']);
+//
+//
+// gulp.task('jekyllCSSRename', function() {
+//   gulp.src("../CMS/assets/css/styles.css")
+//     .pipe(rename("main.css"))
+//     .pipe(gulp.dest("../CMS/assets/css/"));
+//
+// });
+//
+// /**
+//  * Watch scss files for changes & recompile
+//  * Watch html/md files, run jekyll & reload BrowserSync
+//  */
+// gulp.task('jekyll-watch', function () {
+//     gulp.watch('project/assets/styles/**', ['stylus']);
+//     gulp.watch(['index.html', '_layouts/*.html', '_includes/*'], ['jekyll-rebuild']);
+//     gulp.watch(['_jadefiles/*.jade', '_jadelayouts/*jade'], ['jekyll-jade']);
+// });
+//
+//
+// var filesToMove = [
+//         '../Build/Dev/assets/'
+//     ];
+//
+// gulp.task('move',['clean'], function(){
+//   // the base option sets the relative root for the set of files,
+//   // preserving the folder structure
+//   gulp.src(filesToMove, { base: './' })
+//   .pipe(gulp.dest('../CMS'));
+// });
+//
+//
+// gulp.task('jekyll', ['styles','markup','scripts','jekyll']);
