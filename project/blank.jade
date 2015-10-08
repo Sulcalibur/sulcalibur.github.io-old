@@ -1,0 +1,19 @@
+extends templates/master
+append config
+  - var PageTitle = "This is working Woohoo!"
+  - var PageSlug = "AwesomePage"
+block body
+  body.default
+    .logo
+      h1 Suljam
+      include templates/svg/logo
+    include templates/nav
+    article
+      .fillercontainer  
+        include templates/filler
+        include templates/filler
+        include templates/filler 
+        include templates/filler
+        include templates/filler
+    include templates/footer
+    

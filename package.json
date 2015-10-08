@@ -43,6 +43,7 @@
     "gulp-svg-spritesheet": "iamdarrenhall/gulp-svg-sprite",
     "gulp-util": "^3.0.6",
     "html2jade": "^0.8.4",
-    "lost": "^6.6.1"
+    "lost": "^6.6.1",
+    "rucksack-css": "^0.8.2"
   }
 }

@@ -18,9 +18,10 @@ var gulp           = require('gulp'),
     lost           = require('lost'),
     autoprefixer   = require('autoprefixer'),
     csswring       = require('csswring'),
+    rucksack       = require('rucksack-css'),
     gutil          = require('gulp-util'),
     clean          = require('gulp-clean'),
-    rimraf         = require('rimraf'),
+    // rimraf         = require('rimraf'),
     cp             = require('child_process'),
     watch          = require('gulp-watch')
 ;
@@ -29,6 +30,7 @@ gulp.task('styles', function() {
   // Post CSS Plugins
   var processors = [
     lost,
+    rucksack,
     autoprefixer({browsers: ['last 2 version']}),
     csswring
   ];
@@ -164,10 +166,11 @@ gulp.task('clean', function(){
   .pipe(clean());
 });
 
+gulp.task('default', ['styles','markup','watch','scripts','browser-sync']);
 
 // Starting Working with Jekyll now ======================================
 
-// 
+//
 // var messages = {
 //     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
 // };

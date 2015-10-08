@@ -3,7 +3,7 @@ append config
   - var PageTitle = "This is working Woohoo!"
   - var PageSlug = "AwesomePage"
 block body
-  body
+  body.index
     .logo
       h1 Suljam
       include templates/svg/logo
@@ -29,7 +29,7 @@ block body
       include templates/testimonials
     .services
       include templates/iconServices
+    hr.fancy
     .latestArticles  
       include templates/latestArticles
     include templates/footer
-    

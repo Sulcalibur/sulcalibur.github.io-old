@@ -47,36 +47,3 @@
 // #scroller.simply-scroll.simply-scroll-list
 div.simply-scroll-list
   width 100%
-
-.navbar
-  transition: 0.7s ease-in-out all;
-  width 100%
-  ul
-    padding 2rem
-    margin 0
-    display block
-    margin-top 50px
-    text-align right
-    li
-      display inline
-      padding 1rem
-      font-size 20px
-  a
-    text-decoration none
-    color white
-    padding-top 10px
-    position relative
-    text-decoration none
-    &:before, &:after
-      content ''
-      position absolute
-      transition transform .5s ease
-    &:before
-      left 0
-      bottom 0
-      width 100%
-      height 2px
-      background white
-      transform  scaleX(0)
-    &:hover:before
-      transform  scaleX(1)
