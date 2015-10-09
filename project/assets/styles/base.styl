@@ -3,17 +3,23 @@
 @import '../../../bower_components/normalize.styl/normalize.styl'
 @import '../../../bower_components/animate.styl/animate.styl'
 
+// NPM Imports
+@import 'typographic'
+@import 'nib'
+
 // Local Imports
 @import 'variables'
 @import 'mixins'
 
 // ----------------------------------------------
 
+typographic()
+
 // Settings
 body
   font-size 14px // Base font
   min-height 100%
-
+  background-color green
 
 // Typography
 *
@@ -44,12 +50,13 @@ p a
 
 h2.feat
   font-family 'HelveticaNeue-UltraLight','Helvetica-Neue', Helvetica, Raleway, sans-serif
-  font-weight 100
+  font-weight 200
   color primary
   font-size 52px
   padding 2em 0 1em 0
   display block
   text-align center
+
 h3.feat
   font-weight 100
   lost-column 1/1

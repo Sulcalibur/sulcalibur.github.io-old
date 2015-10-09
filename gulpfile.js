@@ -19,10 +19,12 @@ var gulp           = require('gulp'),
     autoprefixer   = require('autoprefixer'),
     csswring       = require('csswring'),
     rucksack       = require('rucksack-css'),
+    rupture        = require('rupture'),
+    nib            = require('nib'),
+    typographic    = require('typographic'),
     gutil          = require('gulp-util'),
     clean          = require('gulp-clean'),
-    // rimraf         = require('rimraf'),
-    cp             = require('child_process'),
+    // cp             = require('child_process'),
     watch          = require('gulp-watch')
 ;
 
@@ -35,9 +37,14 @@ gulp.task('styles', function() {
     csswring
   ];
 
-  gulp.src('project/assets/styles/styles.styl')
+  gulp.src(['project/assets/styles/styles.styl',
+            '!node_modules/project/assets/styles/styles.styl',
+            '!node_modules/**/**/*.styl'
+          ])
     .pipe(sourcemaps.init())
-    .pipe(stylus())
+    .pipe(stylus({
+      use: [nib(), rupture(), typographic()]
+    }))
     .pipe(postcss(processors))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('../Build/Dev/assets/css/'));
@@ -167,89 +174,3 @@ gulp.task('clean', function(){
 });
 
 gulp.task('default', ['styles','markup','watch','scripts','browser-sync']);
-
-// Starting Working with Jekyll now ======================================
-
-//
-// var messages = {
-//     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
-// };
-//
-// /**
-//  * Build the Jekyll Site
-//  */
-// gulp.task('jekyll-build', function (done) {
-//     browserSync.notify(messages.jekyllBuild);
-//     return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
-//         .on('close', done);
-// });
-//
-// /**
-//  * Rebuild Jekyll & do page reload
-//  */
-// gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
-//     browserSync.reload();
-// });
-//
-// /**
-//  * Wait for jekyll-build, then launch the Server
-//  */
-// gulp.task('jekyll-browser-sync', ['stylus', 'jekyll-build'], function() {
-//     browserSync({
-//         server: {
-//             baseDir: '_site'
-//         }
-//     });
-// });
-//
-// /*
-// * Doing some fancy Gulp stuff here
-// */
-// gulp.task('jekyll-jadefiles', function(){
-//   return gulp.src('_jadefiles/*.jade')
-//   .pipe(jade())
-//   .pipe(prettify({indent_size: 2}))
-//   .pipe(gulp.dest('_includes'));
-// });
-//
-// gulp.task('jekyll-jadelayouts', function(){
-//   return gulp.src('_jadelayouts/*.jade')
-//   .pipe(jade())
-//   .pipe(prettify({indent_size: 2}))
-//   .pipe(gulp.dest('_layouts'));
-// });
-//
-// gulp.task('jekyll-jade', ['jekyll-jadefiles', 'jekyll-jadelayouts']);
-//
-//
-// gulp.task('jekyllCSSRename', function() {
-//   gulp.src("../CMS/assets/css/styles.css")
-//     .pipe(rename("main.css"))
-//     .pipe(gulp.dest("../CMS/assets/css/"));
-//
-// });
-//
-// /**
-//  * Watch scss files for changes & recompile
-//  * Watch html/md files, run jekyll & reload BrowserSync
-//  */
-// gulp.task('jekyll-watch', function () {
-//     gulp.watch('project/assets/styles/**', ['stylus']);
-//     gulp.watch(['index.html', '_layouts/*.html', '_includes/*'], ['jekyll-rebuild']);
-//     gulp.watch(['_jadefiles/*.jade', '_jadelayouts/*jade'], ['jekyll-jade']);
-// });
-//
-//
-// var filesToMove = [
-//         '../Build/Dev/assets/'
-//     ];
-//
-// gulp.task('move',['clean'], function(){
-//   // the base option sets the relative root for the set of files,
-//   // preserving the folder structure
-//   gulp.src(filesToMove, { base: './' })
-//   .pipe(gulp.dest('../CMS'));
-// });
-//
-//
-// gulp.task('jekyll', ['styles','markup','scripts','jekyll']);
