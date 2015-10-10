@@ -52,9 +52,25 @@ h2.feat
   font-weight 200
   color primary
   font-size 52px
-  padding 2em 0 1em 0
+  padding 0.5em 0 1em 0
   display block
   text-align center
+  overflow hidden
+  lost-center 960px
+  &:before
+    right .5em
+    margin-left -50%
+  &:before, &:after
+    background-color lighten(primary, 20)
+    content ""
+    display inline-block
+    height 1px
+    position relative
+    vertical-align middle
+    width 50%
+  &:after
+    left .5em
+    margin-right -50%
 
 h3.feat
   font-weight 100

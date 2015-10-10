@@ -10,16 +10,27 @@
   color fifth
   font-size 1.2rem
   padding 0.5rem 2rem
-  border 1px solid fifth
-  transition: 0.5s ease-in-out all;
+  border 2px solid fifth
+  transition: 0.2s ease-in-out all;
   width 20%
   margin-left 42%
   // margin-right 40%
   text-align center
   background-color white
+  box-shadow -4px 4px 0px lighten(fifth, 10)
+  padding 0.5em 2em
+  outline 2px solid white
+  outline-offset 0px
   &:hover
     color white
     background fifth
-    border 1px solid darken(fifth, 20)
+    outline 2px solid white
+    outline-offset 0px
+    border 2px solid darken(fifth, 10)
+    box-shadow -4px 4px 0px darken(fifth, 10)
   &:active, &:focus
     color darken(fifth, 40)
+    position relative
+    top 4px
+    left -4px
+    box-shadow none
