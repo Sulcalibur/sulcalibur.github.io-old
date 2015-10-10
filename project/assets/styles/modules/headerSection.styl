@@ -5,29 +5,63 @@
   z-index 4
   width 100%
   background-color rgba(70, 98, 159, 0.95)
-  -webkit-clip-path polygon(0 100%,100% 20%,100% 0, 0 0)
-  height 320px
+  -webkit-clip-path polygon(0 0, 100% 0, 100% 80%, 0% 100%)
+  +above(480px)
+    -webkit-clip-path polygon(0 100%,100% 20%,100% 0, 0 0)
+  height 200px
+  +above(480px)
+    height 320px
   margin-top -230px
+  svg
+    width 52px
+    height 30px
+    // width 100px
+    +below(480px)
+      margin-top 20px
+    +above(480px)
+      z-index 12
+      position absolute
+      bottom 70px
+      left 20px
+      width 105px
+      height 60px
+  h1
+    padding 0
+    margin 0
+    z-index 12
+    position absolute
+    bottom 40px
+    color white
+    font-size 30px
+    font-weight 400
+    font-family 'HelveticaNeue-UltraLight','Helvetica-Neue', Helvetica
+    padding-left 20px
+    +above(480px)
+      padding-left 0
+      left 100px
+      font-size 42px
+      font-weight 100
 
 .index
   .logo
-    position fixed
-    z-index 4
-    width 100%
-    background-color rgba(70, 98, 159, 0.95)
-    -webkit-clip-path polygon(80% 100%,100% 20%,100% 0, 0 0)
-    +above(480px)
-      -webkit-clip-path polygon(0 100%,100% 20%,100% 0, 0 0)
-    height 320px
-    margin-top -770px
+    // position fixed
+    // z-index 4
+    // width 100%
+    // background-color rgba(70, 98, 159, 0.95)
+    // -webkit-clip-path polygon(0 100%,100% 20%,100% 0, 0 0)
+    // +above(480px)
+    //   -webkit-clip-path polygon(0 100%,100% 20%,100% 0, 0 0)
+    // height 200px
+    // +above(480px)
+    //   height 320px
+    margin-top -770px!important
     opacity 0
     transition: 0.9s ease-in-out all;
     &.active
-      margin-top -160px
+      margin-top -170px!important
+      +above(480px)
+        margin-top 0px
       opacity 1
-h1
-  padding 0
-  margin 0
 
 header
   position relative
@@ -74,3 +108,7 @@ header
         font-family 'Baskerville', times, times-roman, serif
       .number
         font-size 44px
+
+.headerlogo
+  width 105px
+  height 60px
