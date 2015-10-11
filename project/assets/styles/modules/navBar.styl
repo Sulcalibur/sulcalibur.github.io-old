@@ -1,18 +1,20 @@
-header.navbar, .default .navbar
+header .navbar, .default .navbar
   // transition: 0.7s ease-in-out all;
   width 100%
   position relative
   top -40px
   ul
-    padding 2rem
-    margin 0
+    +above(600px)
+      padding 2rem
+      margin 0
+      margin-top 50px
+      text-align right
     display block
-    margin-top 50px
-    text-align right
     li
       display inline
-      padding 1rem
-      font-size 20px
+      font-size responsive 20px 30px
+      +above(600px)
+        padding 1rem
   a
     text-decoration none
     color primary
@@ -39,15 +41,17 @@ header.navbar, .default .navbar
       width 100%
       top 50px
       ul
-        padding 2rem
+        +above(600px)
+          padding 2rem
+          margin-top 60px
+          text-align right
         margin 0
         display block
-        margin-top 60px
-        text-align right
         li
           display inline
-          padding 1rem
-          font-size 20px
+          +above(600px)
+            font-size responsive
+            padding 1rem
       a
         text-decoration none
         color white
@@ -80,7 +84,8 @@ footer
       text-align right
       li
         display inline
-        padding 1rem
+        +above(600px)
+          padding 1rem
         font-size responsive 14px 22px
     a
       text-decoration none
@@ -101,3 +106,17 @@ footer
         transform  scaleX(0)
       &:hover:before
         transform  scaleX(1)
+header
+  .navbar
+    +below(600px)
+      background-color darken(primary, 10)
+      ul
+        display block
+        padding 0
+        margin 0
+        li
+          display block!important
+          width 100%
+          height 44px
+          text-align center
+          font-size 24px
