@@ -11,14 +11,16 @@
     padding 200px 0
     p, h6
       lost-center 400px
+      +above(600px)
+        lost-center 600px
       // margin auto
       text-align center
-      color rgba(white, 0.8)
+      color white
     p
       font-family 'Baskerville', times, times-roman, serif
       font-style italic
-      font-size 1.8em
-      line-height 1.2em
+      font-size responsive
+      // line-height 1.2em
     .avatar
       height 60px
       width 60px
