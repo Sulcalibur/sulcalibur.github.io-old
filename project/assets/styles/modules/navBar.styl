@@ -1,19 +1,31 @@
-header .navbar, .default .navbar
-  // transition: 0.7s ease-in-out all;
+.navbar
   width 100%
   position relative
   top -40px
+  +below(600px)
+    top 0
+    padding-top 8rem
+    padding-bottom 2rem
+    background-color darken(primary, 10)
   ul
+    padding 0
+    margin 0
+    display block
     +above(600px)
       padding 2rem
-      margin 0
       margin-top 50px
       text-align right
-    display block
     li
-      display inline
-      font-size responsive 20px 30px
+      display block
+      font-size responsive 14px 22px
+      +below(600px)
+        width 100%
+        height 44px
+        padding 0.75rem 0
+        text-align center
+        font-size 24px
       +above(600px)
+        display inline
         padding 1rem
   a
     text-decoration none
@@ -34,89 +46,13 @@ header .navbar, .default .navbar
       transform  scaleX(0)
     &:hover:before
       transform  scaleX(1)
-.index
-  header
-    .navbar
-      // transition: 0.7s ease-in-out all;
-      width 100%
-      top 50px
-      ul
-        +above(600px)
-          padding 2rem
-          margin-top 60px
-          text-align right
-        margin 0
-        display block
-        li
-          display inline
-          +above(600px)
-            font-size responsive
-            padding 1rem
-      a
-        text-decoration none
-        color white
-        padding-top 10px
-        position relative
-        text-decoration none
-        &:before, &:after
-          content ''
-          position absolute
-          transition transform .5s ease
-        &:before
-          left 0
-          bottom 0
-          width 100%
-          height 2px
-          background white
-          transform  scaleX(0)
-        &:hover:before
-          transform  scaleX(1)\
+.index .navbar, footer .navbar
+    top 0
+    a
+      color white
+      &:before
+        background white
 footer
   .navbar
-    // transition: 0.7s ease-in-out all;
-    width 100%
-    top 0
     ul
-      padding 2rem
-      margin 0
-      display block
       margin-top 40px
-      text-align right
-      li
-        display inline
-        +above(600px)
-          padding 1rem
-        font-size responsive 14px 22px
-    a
-      text-decoration none
-      color white
-      padding-top 10px
-      position relative
-      text-decoration none
-      &:before, &:after
-        content ''
-        position absolute
-        transition transform .5s ease
-      &:before
-        left 0
-        bottom 0
-        width 100%
-        height 2px
-        background white
-        transform  scaleX(0)
-      &:hover:before
-        transform  scaleX(1)
-header
-  .navbar
-    +below(600px)
-      background-color darken(primary, 10)
-      ul
-        display block
-        padding 0
-        margin 0
-        li
-          display block!important
-          width 100%
-          height 44px
-          text-align center
-          font-size 24px
