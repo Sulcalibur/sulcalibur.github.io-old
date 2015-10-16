@@ -68,9 +68,12 @@ header
   z-index 5
   background url('/assets/img/bg-temp.jpg')
   background-size cover
-  -webkit-clip-path polygon(0 100%,100% 70%,100% 0, 0 0)
-  height 800px
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
   margin-top -60px
+  height 400px
+  +above(600px)
+    clip-path polygon(0 100%,100% 70%,100% 0, 0 0)
+    height 800px
   h2
     font-family 'HelveticaNeue-UltraLight','Helvetica-Neue', Helvetica, Raleway, sans-serif
     font-size 64px

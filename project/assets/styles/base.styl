@@ -57,20 +57,21 @@ h2.feat
   text-align center
   overflow hidden
   lost-center 960px
-  &:before
-    right .5em
-    margin-left -50%
-  &:before, &:after
-    background-color lighten(primary, 20)
-    content ""
-    display inline-block
-    height 1px
-    position relative
-    vertical-align middle
-    width 50%
-  &:after
-    left .5em
-    margin-right -50%
+  +above(600px)
+    &:before
+      right .5em
+      margin-left -50%
+    &:before, &:after
+      background-color lighten(primary, 20)
+      content ""
+      display inline-block
+      height 1px
+      position relative
+      vertical-align middle
+      width 50%
+    &:after
+      left .5em
+      margin-right -50%
 
 h3.feat
   font-weight 100
