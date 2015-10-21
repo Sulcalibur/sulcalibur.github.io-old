@@ -1,9 +1,12 @@
+.navlink
+  position absolute
+  top 10px
 .navbar
   width 100%
   position relative
   top -40px
   +below(600px)
-    top 0
+    top -400px!important
     padding-top 8rem
     padding-bottom 2rem
     background-color darken(primary, 10)
@@ -54,5 +57,9 @@
         background white
 footer
   .navbar
+    +below(600px)
+      display none
     ul
       margin-top 40px
+  +below(600px)
+    height 2rem
