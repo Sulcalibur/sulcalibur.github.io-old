@@ -3,6 +3,8 @@
 .testimonials
   background-color lighten(primary, 10)
   svgmask()
+  h3
+    color darken(primary, 10)
   section
     padding 2rem 0
     +above(600px)
@@ -18,6 +20,7 @@
       font-style italic
       font-size responsive 18px 28px
       margin-bottom 0
+      letter-spacing: 0.015em
     .avatar
       height 60px
       width 60px
@@ -27,6 +30,6 @@
     cite a
       text-align center
       display block
-      color white
+      color darken(primary, 10)
       text-decoration none
       padding 1rem
