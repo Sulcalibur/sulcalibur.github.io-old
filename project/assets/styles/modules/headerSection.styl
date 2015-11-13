@@ -68,10 +68,13 @@ header
   z-index 5
   background url('/assets/img/bg-temp.jpg')
   background-size cover
+  background-position center
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
   margin-top -60px
-  height 390px
+  height 560px
   +above(600px)
+    height 390px
+    // background-size cover
     clip-path polygon(0 100%,100% 70%,100% 0, 0 0)
     height 800px
   h2
