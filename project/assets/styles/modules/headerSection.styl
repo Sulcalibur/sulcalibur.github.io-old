@@ -16,11 +16,13 @@
     width 52px
     height 30px
     // width 100px
+    position absolute
     +below(480px)
+      z-index 100
+      margin auto
       margin-top 20px
     +above(480px)
       z-index 12
-      position absolute
       bottom 70px
       left 20px
       width 105px
@@ -54,9 +56,12 @@
     // height 200px
     // +above(480px)
     //   height 320px
-    margin-top -770px!important
-    opacity 0
-    transition: 0.9s ease-in-out all;
+    +below(600px)
+      position absolute
+    +above(600px)
+      margin-top -770px!important
+      opacity 0
+      transition: 0.9s ease-in-out all;
     &.active
       margin-top -170px!important
       +above(480px)
@@ -70,25 +75,33 @@ header
   background-size cover
   background-position center
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-  margin-top -60px
   height 560px
   +above(600px)
+    // margin-top -80px
+    margin-top -50px
     height 390px
     // background-size cover
     clip-path polygon(0 100%,100% 70%,100% 0, 0 0)
     height 800px
   h2
     font-family 'HelveticaNeue-UltraLight','Helvetica-Neue', Helvetica, Raleway, sans-serif
-    font-size 64px
     font-weight 100
     color white
     letter-spacing -0.02em
     position relative
     top 270px
+    font-size 34px
+    text-align center
+    +above(600px)
+      font-size 64px
+      top 270px
+      text-align left
     span
       font-family 'Baskerville', times, times-roman, serif
       font-style italic
-      font-size 44px
+      font-size 28px
+      +above(600px)
+        font-size 44px
       font-weight 600
       letter-spacing -0.1em
       display inline-block

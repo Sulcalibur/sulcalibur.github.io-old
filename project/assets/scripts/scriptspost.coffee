@@ -35,3 +35,16 @@ $(document).ready ->
 #   method: 'POST'
 #   data: message: 'hello!'
 #   dataType: 'json'
+
+
+$('.showmenu').bind 'click', ->
+  $('.menusection').toggleClass 'show'
+  return
+$('.menulink').bind 'click', ->
+  $('.menusection').toggleClass 'show'
+  return
+$(document).click (e) ->
+  if !$('.menusection').is(e.target) and $('.menusection').has(e.target).length == 0
+    # Clicked outside, close menu
+    $('.menusection').removeClass 'show'
+  return

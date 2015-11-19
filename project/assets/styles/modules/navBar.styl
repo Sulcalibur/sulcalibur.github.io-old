@@ -1,6 +1,6 @@
 .navlink
   position absolute
-  top 70px
+  top 20px
   left 1rem
   p
     border 1px solid darken(primary, 10)
@@ -11,6 +11,8 @@
     a
       color darken(primary, 10)
       text-decoration none
+      border-bottom 0px solid white
+      color forth
   +above(600px)
     display none
 .navbar
@@ -18,10 +20,20 @@
   position relative
   top -40px
   +below(600px)
-    top -400px!important
+    height 440px
+    top -560px!important
     padding-top 8rem
     padding-bottom 2rem
     background-color darken(primary, 10)
+    position absolute
+    z-index 10
+  &.show
+    top 0!important
+  // .index.navbar
+  //   +above(600px)
+  //     margin-top 1rem
+  .active
+    top -60px!important
   ul
     padding 0
     margin 0
@@ -62,7 +74,7 @@
     &:hover:before
       transform  scaleX(1)
 .index .navbar, footer .navbar
-    top 0
+    top 1rem
     a
       color white
       &:before
