@@ -89,7 +89,7 @@ header
     color white
     letter-spacing -0.02em
     position relative
-    top 270px
+    top 170px
     font-size 34px
     text-align center
     +above(600px)
@@ -97,22 +97,27 @@ header
       top 270px
       text-align left
     span
+      +below(600px)
+        &::after, &::before
+          content " • "
       font-family 'Baskerville', times, times-roman, serif
       font-style italic
       font-size 28px
-      +above(600px)
-        font-size 44px
       font-weight 600
       letter-spacing -0.1em
-      display inline-block
       position relative
-      top -10px
-      border-top 2px solid darken(primary, 10)
-      border-bottom 2px solid darken(primary, 10)
       line-height 0.7em
-      padding-top 7px
+      display block
       padding-bottom 7px
+      top 6px
       -webkit-transform rotate(-10deg) skew(-4deg)
+      +above(600px)
+        display inline-block
+        padding-top 7px
+        top -10px
+        font-size 44px
+        border-top 2px solid darken(primary, 10)
+        border-bottom 2px solid darken(primary, 10)
   + h3
     font-family 'HelveticaNeue-UltraLight','Helvetica-Neue', Helvetica, Raleway, sans-serif
     font-size 34px
