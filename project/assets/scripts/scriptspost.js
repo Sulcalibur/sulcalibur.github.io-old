@@ -19,18 +19,12 @@
     });
   });
 
-  $('.showmenu').bind('click', function() {
-    $('.menusection').toggleClass('show');
+  $('.showmenu').click(function() {
+    $('.menus').addClass('show');
   });
 
-  $('.menulink').bind('click', function() {
-    $('.menusection').toggleClass('show');
-  });
-
-  $(document).click(function(e) {
-    if (!$('.menusection').is(e.target) && $('.menusection').has(e.target).length === 0) {
-      $('.menusection').removeClass('show');
-    }
+  $('.menulink').click(function() {
+    $('.menus').removeClass('show');
   });
 
 }).call(this);

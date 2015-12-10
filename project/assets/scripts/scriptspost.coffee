@@ -36,16 +36,11 @@ $(document).ready ->
 #   data: message: 'hello!'
 #   dataType: 'json'
 
-$('.showmenu').bind 'click', ->
-  $('.menusection').toggleClass 'show'
+$('.showmenu').click ->
+  $('.menus').addClass 'show'
   return
-$('.menulink').bind 'click', ->
-  $('.menusection').toggleClass 'show'
-  return
-$(document).click (e) ->
-  if !$('.menusection').is(e.target) and $('.menusection').has(e.target).length == 0
-    # Clicked outside, close menu
-    $('.menusection').removeClass 'show'
+$('.menulink').click ->
+  $('.menus').removeClass 'show'
   return
 
 # jQuery(document).ready ->
