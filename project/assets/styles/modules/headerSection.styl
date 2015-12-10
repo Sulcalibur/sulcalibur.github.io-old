@@ -1,7 +1,6 @@
 // Header Section
 
 .logo
-  position fixed
   z-index 4
   width 100%
   background-color rgba(70, 98, 159, 0.95)
@@ -12,6 +11,8 @@
   +above(480px)
     height 320px
   margin-top -230px
+  +above(600px)
+    position fixed
   svg
     width 52px
     height 30px
@@ -56,8 +57,8 @@
     // height 200px
     // +above(480px)
     //   height 320px
-    +below(600px)
-      position absolute
+    // +below(600px)
+      // position absolute
     +above(600px)
       margin-top -770px!important
       opacity 0
@@ -76,7 +77,9 @@ header
   background-position center
   clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
   height 560px
+  top -10px
   +above(600px)
+    top 0
     // margin-top -80px
     margin-top -50px
     height 390px

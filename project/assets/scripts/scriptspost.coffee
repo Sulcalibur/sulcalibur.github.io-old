@@ -36,7 +36,6 @@ $(document).ready ->
 #   data: message: 'hello!'
 #   dataType: 'json'
 
-
 $('.showmenu').bind 'click', ->
   $('.menusection').toggleClass 'show'
   return
@@ -48,3 +47,10 @@ $(document).click (e) ->
     # Clicked outside, close menu
     $('.menusection').removeClass 'show'
   return
+
+# jQuery(document).ready ->
+#   jQuery('#block-block-23 li a').each ->
+#     if jQuery(this).attr('href') == location.pathname
+#       jQuery(this).addClass 'active'
+#     return
+#   return
