@@ -42,6 +42,19 @@ $('.showmenu').click ->
 $('.menulink').click ->
   $('.menus').removeClass 'show'
   return
+# $(document).click (e) ->
+#   if !$('.menus').is(e.target) and $('.menus').has(e.target).length == 0
+#     # Clicked outside, close menu
+#     $('.menus').removeClass 'show'
+#   return
+
+
+# $('.showmenu').click ->
+#   $('.menus').addClass 'show'
+#   return
+# $('.menulink').click ->
+#   $('.menus').removeClass 'show'
+#   return
 
 # jQuery(document).ready ->
 #   jQuery('#block-block-23 li a').each ->
