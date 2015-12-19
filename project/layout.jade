@@ -1,0 +1,28 @@
+extends templates/master
+append config
+  - var PageTitle = "This is working Woohoo!"
+  - var PageSlug = "AwesomePage"
+block body
+  body
+    .logo
+      h1 Suljam
+      include templates/svg/logo
+    //- h3 
+    //-   | Skilled web 
+    //-   span &amp; 
+    //-   | app development with over 
+    //-   br
+    //-   | two 
+    //-   //- span.number 2 
+    //-   | decades of design 
+    //-   span &amp; 
+    //-   | illustration experience
+    section
+      h2.feat.wow.fadeIn Layout Examples
+      h3.subheader A Selection of Layout Examples
+      
+    section.widthMedium
+      p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam, dolorum soluta incidunt odit eveniet, tempora, vel debitis, id quidem eligendi deleniti excepturi sapiente. Pariatur, odit, nesciunt! Eum ullam nostrum commodi molestias iste illum beatae. Molestias quas consequuntur, necessitatibus earum. Tempora optio esse, qui sapiente dicta. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi veritatis maiores velit aperiam vero. Itaque, sit, tenetur? Eveniet, corporis, magnam? Dolores tempore accusamus labore saepe, odio sequi numquam quo. Placeat tenetur blanditiis pariatur repudiandae modi vel, libero similique fugit, suscipit, non molestiae quod consequatur optio repellendus quisquam officiis nam id quia quidem iste. Temporibus, at iste.
+
+    include templates/footer
+    
