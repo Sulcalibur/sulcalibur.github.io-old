@@ -1,0 +1,35 @@
+extends templates/master
+append config
+  - var PageTitle = "This is working Woohoo!"
+  - var PageSlug = "AwesomePage"
+block body
+  body.index
+    .logo
+      h1 Suljam
+      include templates/svg/logo
+    header
+      include templates/header
+    //- h3 
+    //-   | Skilled web 
+    //-   span &amp; 
+    //-   | app development with over 
+    //-   br
+    //-   | two 
+    //-   //- span.number 2 
+    //-   | decades of design 
+    //-   span &amp; 
+    //-   | illustration experience
+    section.whatcanwedo
+      include templates/whatcanwedo
+    .specialities  
+      include templates/specialities
+    //- .workedWith
+    //-   include templates/workedWith
+    .testimonials
+      include templates/testimonials2
+    .services
+      include templates/iconServices
+    //- hr.fancy
+    .latestArticles  
+      include templates/latestArticles
+    include templates/footer
