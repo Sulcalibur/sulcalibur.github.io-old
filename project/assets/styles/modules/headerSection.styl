@@ -1,4 +1,13 @@
 // Header Section
+
+
+
+// svgmask()
+//   clip-path polygon(0 10%, 100% 0, 100% 90%, 0% 100%)
+//   +above(600px)
+//     clip-path polygon(0 100%,100% 67%,100% 0, 0 33%)
+//
+
 .menus
   transition all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)
 .logo
@@ -7,7 +16,7 @@
   background-color rgba(70, 98, 159, 0.95)
   -webkit-clip-path polygon(0 0, 100% 0, 100% 80%, 0% 100%)
   +above(480px)
-    -webkit-clip-path polygon(0 100%,100% 20%,100% 0, 0 0)
+    -webkit-clip-path polygon(0 100%,80% 0%,100% 0,0 0)
   height 200px
   // +above(480px)
   //   height 320px
@@ -65,7 +74,7 @@
       opacity 0
       transition: 0.9s ease-in-out all;
     &.active
-      margin-top -170px!important
+      margin-top -30px!important
       +above(480px)
         margin-top 0px
       opacity 1
