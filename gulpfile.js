@@ -50,6 +50,28 @@ gulp.task('styles', function() {
     .pipe(gulp.dest('../Build/Dev/assets/css/'));
 });
 
+gulp.task('stylescms', function() {
+  // Post CSS Plugins
+  var processors = [
+    lost,
+    rucksack,
+    autoprefixer({browsers: ['last 2 version']}),
+    csswring
+  ];
+
+  gulp.src(['project/assets/styles/styles.styl',
+            '!node_modules/project/assets/styles/styles.styl',
+            '!node_modules/**/**/*.styl'
+          ])
+    .pipe(sourcemaps.init())
+    .pipe(stylus({
+      use: [nib(), rupture(), typographic()]
+    }))
+    .pipe(postcss(processors))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('../Build/CMS/assets/css/'));
+});
+
 gulp.task('markup', function() {
   gulp.src('project/*.jade')
   .pipe(jade())
@@ -146,6 +168,18 @@ gulp.task('scriptspre', function() {
     .pipe(gulp.dest('../Build/Dev/assets/js/'));
 });
 
+gulp.task('scriptsprecms', function() {
+  return gulp.src([
+                    'bower_components/modernizr/modernizr.js',
+                    'project/assets/scripts/scriptspre.js'
+                  ])
+    .pipe(sourcemaps.init())
+    .pipe(concat('pre.js'))
+    .pipe(sourcemaps.write())
+    .pipe(uglify())
+    .pipe(gulp.dest('../Build/CMS/assets/js/'));
+});
+
 gulp.task('scriptspost', function() {
   return gulp.src([
                     'bower_components/jquery/dist/jquery.js',
@@ -160,7 +194,22 @@ gulp.task('scriptspost', function() {
     .pipe(gulp.dest('../Build/Dev/assets/js/'));
 });
 
+gulp.task('scriptspostcms', function() {
+  return gulp.src([
+                    'bower_components/jquery/dist/jquery.js',
+                    'bower_components/wow.js/dist/wow.js',
+                    'bower_components/jquery-simplyscroll/jquery.simplyscroll.js',
+                    'project/assets/scripts/scriptspost.js',
+                  ])
+    .pipe(sourcemaps.init())
+    .pipe(concat('post.js'))
+    .pipe(sourcemaps.write())
+    .pipe(uglify())
+    .pipe(gulp.dest('../Build/CMS/assets/js/'));
+});
+
 gulp.task('scripts',['coffee','scriptspre','scriptspost']);
+gulp.task('scriptscms',['coffee','scriptsprecms','scriptspostcms']);
 
 gulp.task('watch', function() {
   gulp.watch('project/**/*.jade', ['markup']);
@@ -174,3 +223,5 @@ gulp.task('clean', function(){
 });
 
 gulp.task('default', ['styles','markup','watch','scripts','browser-sync']);
+
+gulp.task('cms', ['default','stylescms','scriptscms']);
