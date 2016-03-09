@@ -1,183 +1,118 @@
-var gulp           = require('gulp'),
-    jade           = require('gulp-jade'),
-    postcss        = require('gulp-postcss'),
-    prettify       = require('gulp-prettify'),
-    stylus         = require('gulp-stylus'),
-    browserSync    = require('browser-sync'),
-    uglify         = require('gulp-uglify'),
-    rename         = require('gulp-rename'),
-    coffee         = require('gulp-coffee'),
-    concat         = require('gulp-concat'),
-    sourcemaps     = require('gulp-sourcemaps'),
-    svgspritesheet = require('gulp-svg-spritesheet'),
-    html2jade      = require('gulp-html2jade'),
-    svgmin         = require('gulp-svgmin'),
-    imagemin       = require('gulp-imagemin'),
-    rename         = require("gulp-rename"),
-    pngquant       = require('imagemin-pngquant'),
-    lost           = require('lost'),
-    autoprefixer   = require('autoprefixer'),
-    csswring       = require('csswring'),
-    rucksack       = require('rucksack-css'),
-    rupture        = require('rupture'),
-    nib            = require('nib'),
-    typographic    = require('typographic'),
-    gutil          = require('gulp-util'),
-    clean          = require('gulp-clean'),
-    // cp             = require('child_process'),
-    watch          = require('gulp-watch')
-;
+var gulp         = require('gulp'),
+    browserSync  = require('browser-sync'),
+    postcss      = require('gulp-postcss'),
+    stylus       = require('gulp-stylus'),
+    cp           = require('child_process'),
+    jade         = require('gulp-jade'),
+    prettify     = require('gulp-prettify'),
+    // uglify       = require('gulp-uglify'),
+    // rename       = require('gulp-rename'),
+    // coffee       = require('gulp-coffee'),
+    // concat       = require('gulp-concat'),
+    sourcemaps   = require('gulp-sourcemaps'),
+    lost         = require('lost'),
+    autoprefixer = require('autoprefixer')
+ ;
 
-gulp.task('styles', function() {
-  // Post CSS Plugins
+var messages = {
+    jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
+};
+
+/**
+ * Build the Jekyll Site
+ */
+// gulp.task('jekyll-build', function (done) {
+//     browserSync.notify(messages.jekyllBuild);
+//     return cp.spawn('jekyll', ['build'], {stdio: 'inherit'}).on('close', done);
+// });
+
+gulp.task('jekyll-build', function (done) {
+    browserSync.notify(messages.jekyllBuild);
+    return cp.spawn('jekyll', ['build'], {stdio: 'inherit'}).on('close', done);
+    // return cp.spawn('bundle', ['exec', 'jekyll', 'build'], {stdio: 'inherit'}).on('close', done);
+});
+
+/**
+ * Rebuild Jekyll & do page reload
+ */
+gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
+    browserSync.reload();
+});
+
+/**
+ * Wait for jekyll-build, then launch the Server
+ */
+gulp.task('browser-sync', ['stylus', 'jekyll-build'], function() {
+    browserSync({
+        server: {
+            baseDir: '_site'
+        }
+    });
+});
+
+/**
+ * Compile files from _stylus into both _site/css (for live injecting) and site (for future jekyll builds)
+ */
+
+gulp.task('stylus', function() {
   var processors = [
     lost,
-    rucksack,
-    autoprefixer({browsers: ['last 2 version']}),
-    csswring
+    autoprefixer({browsers: ['last 2 version']})
+    // csswring
   ];
 
-  gulp.src(['project/assets/styles/styles.styl',
-            '!node_modules/project/assets/styles/styles.styl',
-            '!node_modules/**/**/*.styl'
-          ])
+  return gulp.src('assets/stylus/main.styl')
     .pipe(sourcemaps.init())
-    .pipe(stylus({
-      use: [nib(), rupture(), typographic()]
-    }))
+    .pipe(stylus())
     .pipe(postcss(processors))
+    // .pipe(minifycss())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('../Build/Dev/assets/css/'))
-    .pipe(gulp.dest('../Build/CMS/assets/css/'));
+    .pipe(gulp.dest('_site/assets/css'))
+    .pipe(browserSync.reload({stream:true}))
+    .pipe(gulp.dest('assets/css'));
 });
 
-gulp.task('markup', function() {
-  gulp.src('project/*.jade')
+/*
+* Doing some fancy Gulp stuff here
+*/
+gulp.task('jaderoot', function(){
+  return gulp.src('*.jade')
   .pipe(jade())
   .pipe(prettify({indent_size: 2}))
-  .pipe(gulp.dest('../Build/Dev/'));
+  .pipe(gulp.dest(''));
 });
 
-gulp.task('browser-sync', function () {
-  var files = [
-  '../Build/Dev/**/*.html',
-  '../Build/Dev/assets/**/*.html',
-  '../Build/Dev/assets/css/**/*.css',
-  '../Build/Dev/assets/img/**/*.svg',
-  '../Build/Dev/assets/img/**/*.jpg',
-  '../Build/Dev/assets/img/**/*.gif',
-  '../Build/Dev/assets/img/**/*.png',
-  '../Build/Dev/assets/js/**/*.js'
-  ];
-
-  browserSync.init(files, {
-    server: {
-      baseDir: '../Build/Dev'
-    }
-  });
+gulp.task('jadefiles', function(){
+  return gulp.src('_jadefiles/*.jade')
+  .pipe(jade())
+  .pipe(prettify({indent_size: 2}))
+  .pipe(gulp.dest('_includes'));
 });
 
-gulp.task('imagemin', function () {
-    return gulp.src('project/assets/images/**/*')
-        .pipe(imagemin({
-            progressive: true,
-            svgoPlugins: [{removeViewBox: false}],
-            use: [pngquant()]
-        }))
-        .pipe(gulp.dest('../Build/Dev/assets/img/'))
-        .pipe(gulp.dest('../Build/CMS/assets/img/'));
+gulp.task('jadelayouts', function(){
+  return gulp.src('_jadelayouts/*.jade')
+  .pipe(jade())
+  .pipe(prettify({indent_size: 2}))
+  .pipe(gulp.dest('_layouts'));
 });
 
-// SVG prep
-var options = {nspaces:2};
-
-gulp.task('svg2jade', function(){
-  gulp.src('project/assets/images/*.svg')
-    .pipe(svgmin())
-    .pipe(html2jade(options))
-    .pipe(gulp.dest('project/templates/svg/'));
+gulp.task('jadepages', function(){
+  return gulp.src('_jadepages/*.jade')
+  .pipe(jade())
+  .pipe(prettify({indent_size: 2}))
+  .pipe(gulp.dest('_pages'));
 });
 
-gulp.task('svgspritesheet', function () {
-    gulp.src('project/assets/images/*.svg')
-    .pipe(svgmin())
-    .pipe(svgspritesheet({
-        cssPathNoSvg: '../Build/Dev/assets/images/sprite.png',
-        cssPathSvg: '../Build/Dev/assets/images/sprite.svg',
-        demoDest: '../Build/Dev/demo.html',
-        padding: 0,
-        positioning: 'packed',
-        units: 'em',
-        templateSrc: 'project/styl.tpl',
-        templateDest: '../Build/Dev/assets/styles/sprite.styl'
-    }))
-    .pipe(svgmin())
-    .pipe(gulp.dest('../Build/Dev/assets/images/sprite.svg'))
-    .pipe(gulp.dest('../Build/CMS/assets/images/sprite.svg'));
+gulp.task('jade', ['jaderoot', 'jadefiles', 'jadelayouts', 'jadepages']);
+
+gulp.task('watch', function () {
+    gulp.watch('assets/stylus/**', ['stylus']);
+    gulp.watch('**/*.jade', ['jade']);
+    // gulp.watch('**/*.html', ['jekyll-rebuild']);
 });
 
-gulp.task('minify-svg',function(){
-  gulp.src('project/assets/images/*svg')
-  .pipe(svgmin())
-  // .pipe(html2jade(options))
-  .pipe(gulp.dest('../Build/Dev/assets/images/'))
-  .pipe(gulp.dest('../Build/CMS/assets/images/'));
-});
-
-gulp.task('minify-svg-icons',function(){
-  gulp.src('project/assets/images/icons/*svg')
-  .pipe(svgmin())
-  // .pipe(html2jade(options))
-  .pipe(gulp.dest('../Build/Dev/assets/images/icons/'))
-  .pipe(gulp.dest('../Build/CMS/assets/images/icons/'));
-});
-
-
-gulp.task('coffee', function() {
-    return gulp.src('project/assets/scripts/*.coffee')
-        .pipe(coffee())
-        .pipe(gulp.dest('project/assets/scripts/'));
-});
-
-gulp.task('scriptspre', function() {
-  return gulp.src([
-                    'bower_components/modernizr/modernizr.js',
-                    'project/assets/scripts/scriptspre.js'
-                  ])
-    .pipe(sourcemaps.init())
-    .pipe(concat('pre.js'))
-    .pipe(sourcemaps.write())
-    .pipe(uglify())
-    .pipe(gulp.dest('../Build/Dev/assets/js/'))
-    .pipe(gulp.dest('../Build/CMS/assets/js/'));
-});
-
-gulp.task('scriptspost', function() {
-  return gulp.src([
-                    'bower_components/jquery/dist/jquery.js',
-                    'bower_components/wow.js/dist/wow.js',
-                    'bower_components/jquery-simplyscroll/jquery.simplyscroll.js',
-                    'project/assets/scripts/scriptspost.js',
-                  ])
-    .pipe(sourcemaps.init())
-    .pipe(concat('post.js'))
-    .pipe(sourcemaps.write())
-    .pipe(uglify())
-    .pipe(gulp.dest('../Build/Dev/assets/js/'))
-    .pipe(gulp.dest('../Build/CMS/assets/js/'));
-});
-
-gulp.task('scripts',['coffee','scriptspre','scriptspost']);
-
-gulp.task('watch', function() {
-  gulp.watch('project/**/*.jade', ['markup']);
-  gulp.watch('project/assets/styles/**/*.styl', ['styles']);
-  gulp.watch('project/assets/scripts/**/*.coffee', ['scripts']);
-});
-
-gulp.task('clean', function(){
-  return gulp.src(['../Build/Dev/*'], {read:false})
-  .pipe(clean());
-});
-
-gulp.task('default', ['styles','markup','watch','scripts','browser-sync']);
+/**
+ * Default task, running just `gulp` will compile the stylus,
+ * compile the jekyll site, launch BrowserSync & watch files.
+ */
+gulp.task('default', ['browser-sync', 'watch']);
