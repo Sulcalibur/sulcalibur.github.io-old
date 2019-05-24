@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
-    "csswring": "^4.0.0",
+    "csswring": "^7.0.0",
     "gulp-clean": "^0.3.1",
     "gulp-html2jade": "^1.1.1",
     "gulp-ignore": "^2.0.1",
